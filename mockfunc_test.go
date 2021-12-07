@@ -84,11 +84,12 @@ func TestSet(t *testing.T) {
 }
 
 func ExampleSet() {
+	type __ = mockfunc.Unused
+	___ := mockfunc.UnusedValue
+
 	type Mock struct {
 		DoFunc func(ctx context.Context, id int) (n int, err error)
 	}
-	type __ = mockfunc.Unused
-	___ := __{}
 
 	var m Mock
 	t := new(testing.T) // dummy

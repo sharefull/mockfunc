@@ -5,10 +5,15 @@ import (
 	"testing"
 )
 
+// Unused represents type of unused values.
 type Unused struct{}
+
+// UnusedValue represents a unused value.
+var UnusedValue = Unused{}
 
 var typUnused = reflect.TypeOf(Unused{})
 
+// TestingT would be implemented by *testing.T.
 type TestingT interface {
 	Helper()
 	Fatal(...interface{})
@@ -17,6 +22,8 @@ type TestingT interface {
 
 var _ TestingT = (*testing.T)(nil)
 
+// Set sets a mock function to dst.
+// The mock function can use Unused instead unused values in the function.
 func Set(t TestingT, dst, fun interface{}) {
 	t.Helper()
 	dstV := reflect.ValueOf(dst)
